@@ -1,0 +1,133 @@
+import { QueryInterface } from 'sequelize';
+import { v4 as uuidv4 } from 'uuid';
+
+export async function up(queryInterface: QueryInterface): Promise<void> {
+    const now = new Date();
+
+    await queryInterface.bulkInsert('challenges', [
+        {
+            id: uuidv4(),
+            title: 'User Dashboard',
+            category: 'UI/UX Design',
+            difficulty: 'Beginner',
+            instruction: 'Write a prompt to build a User Dashboard for a SaaS analytics app. Include layout, components, data displayed, and user interactions.',
+            tips: [
+                'Mention layout structure (sidebar, header, main)',
+                'Specify data types (charts, KPIs, tables)',
+                'Define user role or persona',
+                'Mention tech stack or style preference',
+            ],
+            examplePrompt: 'Create a modern user dashboard for a SaaS analytics platform. The layout should include a left sidebar with navigation, a top header with user profile and notifications, and a main content area. Display key performance indicators (KPIs) as cards at the top showing total users, revenue, and active sessions. Below that, include a line chart for user growth over time and a table showing recent user activity. The design should be clean and professional, using React and Tailwind CSS. Target audience is business analysts.',
+            tags: ['React', 'Tailwind', 'Dashboard'],
+            estimatedMinutes: 10,
+            isActive: true,
+            createdAt: now,
+            updatedAt: now,
+            deletedAt: null,
+        },
+        {
+            id: uuidv4(),
+            title: 'REST API Design',
+            category: 'Backend',
+            difficulty: 'Intermediate',
+            instruction: 'Write a prompt to design a REST API for an e-commerce product catalog. Cover endpoints, authentication, and response structure.',
+            tips: [
+                'Define resources and HTTP methods',
+                'Mention authentication method',
+                'Specify pagination and filtering',
+                'Include error handling expectations',
+            ],
+            examplePrompt: 'Design a RESTful API for an e-commerce product catalog system. Include the following endpoints: GET /products (list all products with pagination and filtering by category/price), GET /products/:id (get single product details), POST /products (create new product - admin only), PUT /products/:id (update product - admin only), DELETE /products/:id (soft delete product - admin only). Use JWT authentication with role-based access control. Implement pagination with page and limit query parameters. Return consistent JSON responses with success/error status, data, and metadata. Include proper HTTP status codes and error messages. Use Node.js with Express and PostgreSQL.',
+            tags: ['API', 'REST', 'Node.js', 'JWT'],
+            estimatedMinutes: 15,
+            isActive: true,
+            createdAt: now,
+            updatedAt: now,
+            deletedAt: null,
+        },
+        {
+            id: uuidv4(),
+            title: 'AI System Prompt',
+            category: 'AI Prompting',
+            difficulty: 'Advanced',
+            instruction: 'Write a system prompt for an AI writing assistant that helps non-native English speakers write professional emails.',
+            tips: [
+                'Define the AI\'s role and persona',
+                'Specify tone and constraints',
+                'Include output format',
+                'Mention few-shot examples',
+            ],
+            examplePrompt: 'You are a professional email writing assistant designed to help non-native English speakers compose clear, polite, and effective business emails. Your role is to transform informal or unclear input into well-structured professional correspondence. Always maintain a respectful and courteous tone. Format emails with proper greeting, body paragraphs, and closing. Avoid overly complex vocabulary - use clear, simple language. When the user provides a rough draft or key points, expand it into a complete email. Include subject line suggestions. If the user\'s intent is unclear, ask clarifying questions. Example: User input: "need tell boss project delay because team sick" → Output: Subject: Project Timeline Update | Dear [Manager Name], I am writing to inform you that our project timeline will need to be adjusted. Unfortunately, several team members have been unwell this week, which has impacted our progress. We are working to get back on track and will provide you with a revised timeline by [date]. Thank you for your understanding. Best regards, [Your Name]',
+            tags: ['LLM', 'System Prompt', 'NLP'],
+            estimatedMinutes: 20,
+            isActive: true,
+            createdAt: now,
+            updatedAt: now,
+            deletedAt: null,
+        },
+        {
+            id: uuidv4(),
+            title: 'Database Schema',
+            category: 'Database',
+            difficulty: 'Beginner',
+            instruction: 'Write a prompt to design a database schema for a social media platform like Twitter.',
+            tips: [
+                'Name the entities/tables needed',
+                'Mention relationships between them',
+                'Specify constraints or indexes',
+                'Include scale considerations',
+            ],
+            examplePrompt: 'Design a PostgreSQL database schema for a Twitter-like social media platform. Include the following tables: users (id, username, email, password_hash, bio, profile_image_url, created_at), posts (id, user_id, content, image_url, created_at), follows (follower_id, following_id, created_at), likes (user_id, post_id, created_at), comments (id, post_id, user_id, content, created_at). Define relationships: users have many posts, users can follow many users (many-to-many), posts have many likes and comments. Add foreign key constraints with ON DELETE CASCADE. Create indexes on user_id, post_id, and created_at columns for performance. Use UUID for primary keys. Consider partitioning the posts table by created_at for scalability.',
+            tags: ['PostgreSQL', 'Schema', 'SQL'],
+            estimatedMinutes: 12,
+            isActive: true,
+            createdAt: now,
+            updatedAt: now,
+            deletedAt: null,
+        },
+        {
+            id: uuidv4(),
+            title: 'CI/CD Pipeline',
+            category: 'DevOps',
+            difficulty: 'Intermediate',
+            instruction: 'Write a prompt to create a CI/CD pipeline for a Node.js app deployed to AWS.',
+            tips: [
+                'Specify the CI/CD tool',
+                'Define stages (build, test, deploy)',
+                'Mention environment strategies',
+                'Include rollback and notifications',
+            ],
+            examplePrompt: 'Create a CI/CD pipeline using GitHub Actions for a Node.js application deployed to AWS ECS. The pipeline should trigger on push to main branch and pull requests. Include the following stages: 1) Lint and type-check with ESLint and TypeScript, 2) Run unit and integration tests with Jest, 3) Build Docker image and push to Amazon ECR, 4) Deploy to staging environment (ECS) automatically, 5) Require manual approval for production deployment, 6) Deploy to production ECS cluster with blue-green deployment strategy, 7) Run smoke tests after deployment, 8) Automatic rollback if health checks fail, 9) Send Slack notifications on success/failure. Use environment-specific secrets stored in GitHub Secrets. Include caching for node_modules to speed up builds.',
+            tags: ['GitHub Actions', 'AWS', 'Docker'],
+            estimatedMinutes: 18,
+            isActive: true,
+            createdAt: now,
+            updatedAt: now,
+            deletedAt: null,
+        },
+        {
+            id: uuidv4(),
+            title: 'ML Model Training',
+            category: 'Data Science',
+            difficulty: 'Advanced',
+            instruction: 'Write a prompt to build a customer churn prediction model using historical transaction data.',
+            tips: [
+                'Specify the algorithm or framework',
+                'Mention feature engineering steps',
+                'Define evaluation metrics',
+                'Include preprocessing requirements',
+            ],
+            examplePrompt: 'Build a customer churn prediction model using Python and scikit-learn. Dataset: historical transaction data with customer demographics, purchase history, and churn labels. Preprocessing steps: 1) Handle missing values using median imputation for numerical features and mode for categorical, 2) Encode categorical variables using one-hot encoding, 3) Scale numerical features using StandardScaler, 4) Handle class imbalance using SMOTE. Feature engineering: create features for recency (days since last purchase), frequency (number of purchases), monetary value (total spend), average order value, and purchase trend (increasing/decreasing). Split data 80/20 train/test with stratification. Train multiple models: Logistic Regression (baseline), Random Forest, and XGBoost. Use 5-fold cross-validation. Evaluate using precision, recall, F1-score, and ROC-AUC. Optimize for recall to minimize false negatives. Perform hyperparameter tuning using GridSearchCV. Generate feature importance plot and confusion matrix. Save the best model using joblib.',
+            tags: ['Python', 'Scikit-learn', 'ML'],
+            estimatedMinutes: 25,
+            isActive: true,
+            createdAt: now,
+            updatedAt: now,
+            deletedAt: null,
+        },
+    ]);
+}
+
+export async function down(queryInterface: QueryInterface): Promise<void> {
+    await queryInterface.bulkDelete('challenges', {}, {});
+}
